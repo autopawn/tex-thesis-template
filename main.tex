@@ -1,0 +1,42 @@
+\documentclass[letterpaper]{article}
+
+%% Idioma y fuentes
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+%% Tamaño de la página y márgenes
+\usepackage[letterpaper,top=2.5cm,bottom=4cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Paquete para definir cualquier tamaño de font
+\usepackage{anyfontsize}
+
+% Paquete para definir los formatos de los títulos
+\usepackage{titlesec}
+
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
+
+%% Paquetes de utilidad general
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% Valores a modificar:
+\title{Título de la memoria}
+\author{Nombre del alumno}
+
+\begin{document}
+
+% Portada:
+\begin{centering}
+    ``\fontsize{20}{24}\selectfont \MakeUppercase{\@title}''
+\end{centering}
+
+\bibliographystyle{plain}
+\bibliography{main}{}
+
+\end{document}
