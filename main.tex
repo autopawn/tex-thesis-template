@@ -1,14 +1,21 @@
-\documentclass[letterpaper]{article}
+\documentclass[letterpaper,12pt]{article}
 
 %% Idioma y fuentes
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{fontspec}
 
-%% Tamaño de la página y márgenes
-\usepackage[letterpaper,top=2.5cm,bottom=4cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% NOTE: La font principal, debería ser Calibri, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible Carlito. Si (de alguna manera) tiene instalada Calibri en su sistema, puede colocarla aquí:
+\setmainfont{Carlito}
+
+% Tamaño de la página y márgenes
+\usepackage[letterpaper,top=2.5cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % Paquete para definir cualquier tamaño de font
 \usepackage{anyfontsize}
+
+% Determinar interlineado:
+\renewcommand{\baselinestretch}{1.25}
 
 % Paquete para definir los formatos de los títulos
 \usepackage{titlesec}
@@ -26,14 +33,39 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 % Valores a modificar:
-\title{Título de la memoria}
-\author{Nombre del alumno}
+\newcommand{\titulo}{Título de la memoria}
+\newcommand{\ciudad}{Ciudad} % e.g. Valparaíso
+% TODO: Consultar el formato de los nombres:
+\newcommand{\nombrealumno}{Nombre del alumno}
+\newcommand{\nombreprofesor}{Nombre del profesor guía}
+\newcommand{\nombrecorreferente}{Nombre del correferente}
+% Año y mes del examen
+\newcommand{\mesexamen}{Diciembre}
+\newcommand{\anioexamen}{20XX}
+% Dedicatoria y agradecimientos
+\newcommand{\dedicatoria}{
+Considerando lo importancia de este trabajo para los alumnos, este apartado es para que el autor entregue palabras personales para dedicar este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
+}
+\newcommand{\agradecimientos}{
+Considerando la importancia de este trabajo para los alumnos, este apartado se podrá incluir en el caso de que el autor desee agradecer a las personas que facilitaron alguna ayuda relevante en su trabajo para la realización de este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
+}
+\newcommand{\resumen}{
+El resumen y las palabras clave no deben superar la mitad de la página, donde debe precisarse brevemente: 1) lo que el autor ha hecho, 2) cómo lo hizo (sólo si es importante detallarlo), 3) los resultados principales, 4) la relevancia de los resultados. El resumen es una representación abreviada, pero comprensiva de la memoria y debe informar sobre el objetivo, la metodología y los resultados del trabajo realizado.
+}
+\newcommand{\palabrasclave}{
+Cinco es el máximo de palabras clave para describir los temas tratados en la memoria, ponerlas separadas por punto y comas.
+}
+
 
 \begin{document}
 
-% Portada:
+\input{portadas}
+
+
+
+
 \begin{centering}
-    ``\fontsize{20}{24}\selectfont \MakeUppercase{\@title}''
+    \fontsize{20}{24}\selectfont ``\MakeUppercase{\titulo}''
 \end{centering}
 
 \bibliographystyle{plain}

@@ -9,4 +9,4 @@ document: clean
 	xelatex main.tex
 
 clean:
-	rm main.log main.aux main.blg main.out main.bbl main.pdf || true
+	rm main.log main.aux main.blg main.out main.bbl main.pdf missfont.log || true

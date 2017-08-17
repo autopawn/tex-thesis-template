@@ -12,8 +12,11 @@ texlive-xetex
 texlive-bibtex
 
 texlive-babel-spanish
+texlive-fontspec
 texlive-anyfontsize
 texlive-titlesec
 ```
+
+Si encuentra un paquete que esté faltando, por favor [escriba una issue](https://github.com/Autopawn/tex-thesis-template/issues/new).
 
 Si aun así tiene problemas (porque faltan archivos `.sty`) para compilar en otras distribuciones, puede optar por la medida extrema de instalar `texlive-*`.
