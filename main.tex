@@ -1,6 +1,6 @@
 \documentclass[letterpaper,12pt]{article}
 
-%% Idioma y fuentes
+% Idioma y fuentes
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
@@ -9,7 +9,9 @@
 \usepackage{anyfontsize}
 
 % NOTE: La font principal, debería ser Calibri, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible Carlito. Si (de alguna manera) tiene instalada Calibri en su sistema, puede colocarla aquí:
-\setmainfont{Carlito}
+\newcommand{\fuente}{Carlito}
+
+\setmainfont{\fuente}
 
 % Tamaño de la página y márgenes
 \usepackage[letterpaper,top=2.5cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -23,27 +25,26 @@
 % Paquete para definir los formatos de los títulos
 \usepackage[explicit]{titlesec}
 
-\titleformat{name=\section}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
-\titleformat{name=\section,numberless}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+\titleformat{name=\section}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{#1}
+\titleformat{name=\section,numberless}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{#1}
 \titlespacing*{name=\section}{0pt}{0pt}{0.5cm}
 \titlespacing*{name=\section,numberless}{0pt}{0pt}{0.5cm}
 
 % Separación entre parrafos
 \setlength{\parskip}{0.4cm}
 
-% \titleformat*{\section}{\LARGE\bfseries}
-% \titleformat*{\subsection}{\Large\bfseries}
-% \titleformat*{\subsubsection}{\large\bfseries}
-% \titleformat*{\paragraph}{\large\bfseries}
-% \titleformat*{\subparagraph}{\large\bfseries}
-
 % Paquetes de utilidad general
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
+% Formato de las tablas de contenido
+\usepackage[tocflat]{tocstyle}
+\usetocstyle{allwithdot}
 
-% Valores a modificar:
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
+% VALORES A MODIFICAR POR USTED:
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 \newcommand{\titulo}{Título de la memoria}
 \newcommand{\ciudad}{Ciudad} % e.g. Valparaíso
 % TODO: Consultar el formato de los nombres:
@@ -72,21 +73,88 @@ Cinco es el máximo de palabras clave para describir los temas tratados en la me
 \newcommand{\palabrasclaveingles}{
 Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 }
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 
+% Para obtener el número de la última página
+\usepackage{lastpage}
 
+% Header y footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{\fontsize{10}{12}\selectfont\MakeUppercase{\titulo}}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage\ de \pageref{LastPage}}
+\rfoot{}
+\renewcommand{\headrulewidth}{1pt}
+
+% Comandos para secciones
+\newcommand{\secnumbersection}[1]{
+\addtocounter{section}{1}
+\section*{CAPÍTULO \thesection \texorpdfstring{\\}\ #1}
+\addcontentsline{toc}{section}{CAPÍTULO \thesection : #1}
+}
+\newcommand{\secnumberlesssection}[1]{
+\section*{#1}
+\phantomsection
+\addcontentsline{toc}{section}{#1}
+}
+
+% Nombres
+\addto\captionsspanish{\renewcommand{\contentsname}{ÍNDICE DE CONTENIDOS}}
+\addto\captionsspanish{\renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}}
+\addto\captionsspanish{\renewcommand{\listtablename}{ÍNDICE DE TABLAS}}
+\makeatletter
+\renewenvironment{thebibliography}[1]
+     {\secnumberlesssection{REFERENCIAS BIBLIOGRÁFICAS}
+      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+
+% Personalizar Tabla de Contenidos
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
+\renewcommand{\cftsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
+\renewcommand{\cftsubsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 \begin{document}
 
 \input{portadas}
 
-\newpage
+\begin{titlepage}
 \input{glosario}
+\end{titlepage}
+
+%Índice de contenidos:
+\begin{titlepage}
+\tableofcontents
+\clearpage
+\end{titlepage}
 
 %Índice de figuras:
-% --
-%Índice de contenidos:
-% --
+\begin{titlepage}
+\listoftables
+\listoffigures
+\clearpage
+\end{titlepage}
 
-\newpage
 \input{introduccion}
 
 \newpage
@@ -101,7 +169,11 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \input{conclusiones}
 
 \newpage
-\bibliographystyle{plain}
-\bibliography{main}{}
+\input{anexos}
+
+\newpage
+% Bibliografía estilo IEEE con las citas "especiales".
+\bibliographystyle{IEEEtranSN}
+\bibliography{bibliografia}{}
 
 \end{document}
