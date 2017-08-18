@@ -29,6 +29,7 @@ texlive-anyfontsize
 texlive-titlesec
 texlive-lastpage
 texlive-tocloft
+texlive-float
 
 texlive-IEEEtran
 ```
