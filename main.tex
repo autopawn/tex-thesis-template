@@ -5,23 +5,31 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
 
+% Paquete para definir cualquier tamaño de font
+\usepackage{anyfontsize}
+
 % NOTE: La font principal, debería ser Calibri, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible Carlito. Si (de alguna manera) tiene instalada Calibri en su sistema, puede colocarla aquí:
 \setmainfont{Carlito}
 
 % Tamaño de la página y márgenes
 \usepackage[letterpaper,top=2.5cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
-% Paquete para definir cualquier tamaño de font
-\usepackage{anyfontsize}
-
 % Determinar interlineado:
-\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.0}
+
+% Eliminar sangrías:
+\setlength{\parindent}{0cm}
 
 % Paquete para definir los formatos de los títulos
 \usepackage[explicit]{titlesec}
 
-\titleformat{\section}[runin]{\fontsize{16}{32}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
-%\titleformat{name=\section,numberless}[runin]{\fontsize{16}{32}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+\titleformat{name=\section}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+\titleformat{name=\section,numberless}[block]{\fontsize{16}{24}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+\titlespacing*{name=\section}{0pt}{0pt}{0.5cm}
+\titlespacing*{name=\section,numberless}{0pt}{0pt}{0.5cm}
+
+% Separación entre parrafos
+\setlength{\parskip}{0.4cm}
 
 % \titleformat*{\section}{\LARGE\bfseries}
 % \titleformat*{\subsection}{\Large\bfseries}
@@ -29,11 +37,11 @@
 % \titleformat*{\paragraph}{\large\bfseries}
 % \titleformat*{\subparagraph}{\large\bfseries}
 
-
-%% Paquetes de utilidad general
+% Paquetes de utilidad general
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
 
 % Valores a modificar:
 \newcommand{\titulo}{Título de la memoria}
@@ -42,7 +50,7 @@
 \newcommand{\nombrealumno}{Nombre del alumno}
 \newcommand{\nombreprofesor}{Nombre del profesor guía}
 \newcommand{\nombrecorreferente}{Nombre del correferente}
-% Año y mes del examen
+% Mes y año del examen
 \newcommand{\mesexamen}{Diciembre}
 \newcommand{\anioexamen}{20XX}
 % Dedicatoria y agradecimientos
@@ -69,6 +77,14 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \begin{document}
 
 \input{portadas}
+
+\newpage
+\input{glosario}
+
+%Índice de figuras:
+% --
+%Índice de contenidos:
+% --
 
 \newpage
 \input{introduccion}
