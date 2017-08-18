@@ -30,6 +30,7 @@ texlive-titlesec
 texlive-lastpage
 texlive-tocloft
 texlive-float
+texlive-koma-script
 
 texlive-IEEEtran
 ```
@@ -37,3 +38,7 @@ texlive-IEEEtran
 Si encuentra un paquete que esté faltando, por favor [escriba una issue](https://github.com/Autopawn/tex-thesis-template/issues/new), generalmente su nombre comenzará con `texlive` y contendrá el mismo nombre del archivo `.sty` faltante mencionado en el error que salga.
 
 Si aun así tiene problemas para compilar en otras distribuciones, puede optar por la medida extrema de instalar `texlive-*`.
+
+# Font
+
+La font principal debería ser `Calibri`, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible `Carlito`. Si (de alguna manera) tiene instalada Calibri en su sistema, puede reemplazar todas las veces que dice `Carlito` por `Calibri` en `main.tex`.

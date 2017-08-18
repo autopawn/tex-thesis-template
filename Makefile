@@ -11,4 +11,4 @@ document: clean
 	xelatex main.tex
 
 clean:
-	rm main.log main.aux main.blg main.out main.bbl main.pdf missfont.log || true
+	rm main.log main.aux main.blg main.out main.bbl main.pdf missfont.log main.lof main.lot main.toc || true

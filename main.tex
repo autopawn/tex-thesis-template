@@ -4,8 +4,7 @@
 % VALORES A MODIFICAR POR USTED:
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 
-% NOTE: La font principal, debería ser Calibri, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible Carlito. Si (de alguna manera) tiene instalada Calibri en su sistema, puede colocarla aquí:
-\newcommand{\fuente}{Carlito}
+% NOTE: Leer nota en el README sobre la font.
 
 \newcommand{\titulo}{Título de la memoria}
 \newcommand{\ciudad}{Ciudad} % e.g. Valparaíso
@@ -51,7 +50,7 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \usepackage{anyfontsize}
 
 % Settear font
-\setmainfont{\fuente}
+\setmainfont{Carlito}
 
 % Tamaño de la página y márgenes
 \usepackage[letterpaper,top=2.5cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -123,15 +122,8 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 
 % Nombres
 \addto\captionsspanish{\renewcommand{\contentsname}{ÍNDICE DE CONTENIDOS}}
-\makeatletter
-    \renewcommand*{\ext@figure}{lot}
-    \let\c@figure\c@table
-    \let\ftype@figure\ftype@table
-    \let\listoftableandfigures\listoftables
-    \renewcommand*\listtablename{ÍNDICE DE FIGURAS}
-\makeatother
 \addto\captionsspanish{\renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}}
-\addto\captionsspanish{\renewcommand{\listtablename}{ÍNDICE DE FIGURAS}}
+\addto\captionsspanish{\renewcommand{\listtablename}{ÍNDICE DE TABLAS}}
 \makeatletter
 \renewenvironment{thebibliography}[1]
      {\secnumberlesssection{REFERENCIAS BIBLIOGRÁFICAS}
@@ -155,10 +147,13 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \makeatother
 
 % Personalizar Tabla de Contenidos
+
 \usepackage{tocloft}
-\renewcommand{\cftsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
-\renewcommand{\cftsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
-\renewcommand{\cftsubsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{\fuente}}
+\renewcommand{\cftsecfont}{\fontsize{12}{14}\selectfont\fontspec{Carlito}}
+\renewcommand{\cftsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{Carlito}}
+\renewcommand{\cftsubsubsecfont}{\fontsize{12}{14}\selectfont\fontspec{Carlito}}
+
+\renewcommand\cftfigfont{\fontsize{12}{14}\selectfont\fontspec{Carlito}}
 
 % Links sin color
 \usepackage{hyperref}
@@ -184,7 +179,10 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \thispagestyle{portada}
 \phantomsection
 \addcontentsline{toc}{section}{ÍNDICE DE FIGURAS}
-\listoftableandfigures
+\listoffigures
+\phantomsection
+\addcontentsline{toc}{section}{ÍNDICE DE TABLAS}
+\listoftables
 
 \newpage
 \pagestyle{intermedio}
