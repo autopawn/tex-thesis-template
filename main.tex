@@ -15,16 +15,19 @@
 \usepackage{anyfontsize}
 
 % Determinar interlineado:
-\renewcommand{\baselinestretch}{1.25}
+\renewcommand{\baselinestretch}{1.2}
 
 % Paquete para definir los formatos de los títulos
-\usepackage{titlesec}
+\usepackage[explicit]{titlesec}
 
-\titleformat*{\section}{\LARGE\bfseries}
-\titleformat*{\subsection}{\Large\bfseries}
-\titleformat*{\subsubsection}{\large\bfseries}
-\titleformat*{\paragraph}{\large\bfseries}
-\titleformat*{\subparagraph}{\large\bfseries}
+\titleformat{\section}[runin]{\fontsize{16}{32}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+%\titleformat{name=\section,numberless}[runin]{\fontsize{16}{32}\selectfont\bfseries}{}{0pt}{\MakeUppercase{#1}}
+
+% \titleformat*{\section}{\LARGE\bfseries}
+% \titleformat*{\subsection}{\Large\bfseries}
+% \titleformat*{\subsubsection}{\large\bfseries}
+% \titleformat*{\paragraph}{\large\bfseries}
+% \titleformat*{\subparagraph}{\large\bfseries}
 
 
 %% Paquetes de utilidad general
@@ -52,8 +55,14 @@ Considerando la importancia de este trabajo para los alumnos, este apartado se p
 \newcommand{\resumen}{
 El resumen y las palabras clave no deben superar la mitad de la página, donde debe precisarse brevemente: 1) lo que el autor ha hecho, 2) cómo lo hizo (sólo si es importante detallarlo), 3) los resultados principales, 4) la relevancia de los resultados. El resumen es una representación abreviada, pero comprensiva de la memoria y debe informar sobre el objetivo, la metodología y los resultados del trabajo realizado.
 }
+\newcommand{\resumeningles}{
+Corresponde a la traducción al idioma inglés del Resumen anterior. Sujeto a la misma regla de extensión del Resumen.
+}
 \newcommand{\palabrasclave}{
 Cinco es el máximo de palabras clave para describir los temas tratados en la memoria, ponerlas separadas por punto y comas.
+}
+\newcommand{\palabrasclaveingles}{
+Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 }
 
 
@@ -61,13 +70,21 @@ Cinco es el máximo de palabras clave para describir los temas tratados en la me
 
 \input{portadas}
 
+\newpage
+\input{introduccion}
 
+\newpage
+\input{definicion_del_problema}
+\newpage
+\input{marco_conceptual}
+\newpage
+\input{propuesta_de_solucion}
+\newpage
+\input{validacion_de_la_solucion}
+\newpage
+\input{conclusiones}
 
-
-\begin{centering}
-    \fontsize{20}{24}\selectfont ``\MakeUppercase{\titulo}''
-\end{centering}
-
+\newpage
 \bibliographystyle{plain}
 \bibliography{main}{}
 
