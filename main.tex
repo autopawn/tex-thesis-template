@@ -1,5 +1,38 @@
 \documentclass[letterpaper,12pt]{article}
 
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
+% VALORES A MODIFICAR POR USTED:
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
+\newcommand{\titulo}{Título de la memoria}
+\newcommand{\ciudad}{Ciudad} % e.g. Valparaíso
+% TODO: Consultar el formato de los nombres:
+\newcommand{\nombrealumno}{Nombre del alumno}
+\newcommand{\nombreprofesor}{Nombre del profesor guía}
+\newcommand{\nombrecorreferente}{Nombre del correferente}
+% Mes y año del examen
+\newcommand{\mesexamen}{Diciembre}
+\newcommand{\anioexamen}{20XX}
+% Dedicatoria y agradecimientos
+\newcommand{\dedicatoria}{
+Considerando lo importancia de este trabajo para los alumnos, este apartado es para que el autor entregue palabras personales para dedicar este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
+}
+\newcommand{\agradecimientos}{
+Considerando la importancia de este trabajo para los alumnos, este apartado se podrá incluir en el caso de que el autor desee agradecer a las personas que facilitaron alguna ayuda relevante en su trabajo para la realización de este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
+}
+\newcommand{\resumen}{
+El resumen y las palabras clave no deben superar la mitad de la página, donde debe precisarse brevemente: 1) lo que el autor ha hecho, 2) cómo lo hizo (sólo si es importante detallarlo), 3) los resultados principales, 4) la relevancia de los resultados. El resumen es una representación abreviada, pero comprensiva de la memoria y debe informar sobre el objetivo, la metodología y los resultados del trabajo realizado.
+}
+\newcommand{\resumeningles}{
+Corresponde a la traducción al idioma inglés del Resumen anterior. Sujeto a la misma regla de extensión del Resumen.
+}
+\newcommand{\palabrasclave}{
+Cinco es el máximo de palabras clave para describir los temas tratados en la memoria, ponerlas separadas por punto y comas.
+}
+\newcommand{\palabrasclaveingles}{
+Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
+}
+% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
+
 % Idioma y fuentes
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
@@ -42,52 +75,29 @@
 \usepackage[tocflat]{tocstyle}
 \usetocstyle{allwithdot}
 
-% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
-% VALORES A MODIFICAR POR USTED:
-% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
-\newcommand{\titulo}{Título de la memoria}
-\newcommand{\ciudad}{Ciudad} % e.g. Valparaíso
-% TODO: Consultar el formato de los nombres:
-\newcommand{\nombrealumno}{Nombre del alumno}
-\newcommand{\nombreprofesor}{Nombre del profesor guía}
-\newcommand{\nombrecorreferente}{Nombre del correferente}
-% Mes y año del examen
-\newcommand{\mesexamen}{Diciembre}
-\newcommand{\anioexamen}{20XX}
-% Dedicatoria y agradecimientos
-\newcommand{\dedicatoria}{
-Considerando lo importancia de este trabajo para los alumnos, este apartado es para que el autor entregue palabras personales para dedicar este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
-}
-\newcommand{\agradecimientos}{
-Considerando la importancia de este trabajo para los alumnos, este apartado se podrá incluir en el caso de que el autor desee agradecer a las personas que facilitaron alguna ayuda relevante en su trabajo para la realización de este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
-}
-\newcommand{\resumen}{
-El resumen y las palabras clave no deben superar la mitad de la página, donde debe precisarse brevemente: 1) lo que el autor ha hecho, 2) cómo lo hizo (sólo si es importante detallarlo), 3) los resultados principales, 4) la relevancia de los resultados. El resumen es una representación abreviada, pero comprensiva de la memoria y debe informar sobre el objetivo, la metodología y los resultados del trabajo realizado.
-}
-\newcommand{\resumeningles}{
-Corresponde a la traducción al idioma inglés del Resumen anterior. Sujeto a la misma regla de extensión del Resumen.
-}
-\newcommand{\palabrasclave}{
-Cinco es el máximo de palabras clave para describir los temas tratados en la memoria, ponerlas separadas por punto y comas.
-}
-\newcommand{\palabrasclaveingles}{
-Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
-}
-% @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
-
 % Para obtener el número de la última página
 \usepackage{lastpage}
 
 % Header y footer
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{}
-\chead{\fontsize{10}{12}\selectfont\MakeUppercase{\titulo}}
-\rhead{}
-\lfoot{}
-\cfoot{\thepage\ de \pageref{LastPage}}
-\rfoot{}
-\renewcommand{\headrulewidth}{1pt}
+\fancypagestyle{portada}{
+    \lhead{}
+    \chead{}
+    \rhead{}
+    \lfoot{}
+    \cfoot{\fontsize{10}{12}\selectfont \thepage}
+    \rfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{intermedio}{
+    \lhead{}
+    \chead{\fontsize{10}{12}\selectfont\MakeUppercase{\titulo}}
+    \rhead{}
+    \lfoot{}
+    \cfoot{\fontsize{10}{12}\selectfont Página \textbf{\thepage}\ de \textbf{\pageref{LastPage}}}
+    \rfoot{}
+    \renewcommand{\headrulewidth}{1pt}
+}
 
 % Comandos para secciones
 \newcommand{\secnumbersection}[1]{
@@ -136,25 +146,27 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 \begin{document}
 
+\pagestyle{portada}
+\pagenumbering{roman}
 \input{portadas}
 
-\begin{titlepage}
+\newpage
 \input{glosario}
-\end{titlepage}
 
 %Índice de contenidos:
-\begin{titlepage}
+\newpage
+\thispagestyle{portada}
 \tableofcontents
-\clearpage
-\end{titlepage}
 
 %Índice de figuras:
-\begin{titlepage}
+\newpage
+\thispagestyle{portada}
 \listoftables
 \listoffigures
-\clearpage
-\end{titlepage}
 
+\newpage
+\pagestyle{intermedio}
+\pagenumbering{arabic}
 \input{introduccion}
 
 \newpage
