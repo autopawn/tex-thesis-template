@@ -17,6 +17,7 @@ Cumplir estas reglas de formato depende de Ud.:
 Los siguientes paquetes se deben instalar para compilar el documento, al menos en `Fedora`:
 
 ```
+texlive
 texlive-latex
 texlive-amsmath
 texlive-xetex
@@ -42,3 +43,7 @@ Si aun así tiene problemas para compilar en otras distribuciones, puede optar p
 # Font
 
 La font principal debería ser `Calibri`, pero hay que pagar por ella al menos que se esté usando Windows. En su defecto se usa la métricamente compatible `Carlito`. Si (de alguna manera) tiene instalada Calibri en su sistema, puede reemplazar todas las veces que dice `Carlito` por `Calibri` en `main.tex`.
+
+## Descargar la font `Carlito`
+
+Si desea usar `Carlito` y no está instalada en su sistema, la puede descargar en del siguiente [enlace](https://fontlibrary.org/en/font/carlito), luego de descargarla, recuerde instalarla en su sistema operativo.
