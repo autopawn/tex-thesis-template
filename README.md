@@ -33,7 +33,7 @@ texlive-tocloft
 texlive-float
 texlive-koma-script
 
-texlive-natbib
+texlive-apalike2
 ```
 
 Si encuentra un paquete que esté faltando, por favor [escriba una issue](https://github.com/Autopawn/tex-thesis-template/issues/new), generalmente su nombre comenzará con `texlive` y contendrá el mismo nombre del archivo `.sty` faltante mencionado en el error que salga.
