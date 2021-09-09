@@ -165,6 +165,17 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 \usepackage{hyperref}
 \hypersetup{colorlinks = false}
 
+% Comando para secciónes sin enumeración
+% (sugerido por @anibalbastiass https://github.com/autopawn/tex-thesis-template/issues/5#issuecomment-916106128)
+\newcommand{\secnumberlesssubsection}[1]{
+\subsection*{#1}
+\phantomsection
+\addcontentsline{toc}{subsection}{#1}
+\setcounter{subsection}{0}
+}
+% Forma de uso:
+% \secnumberlesssubsection{"Sub seccion sin enumeración"}
+
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 \begin{document}
 \sloppy % Para evitar que referencias se escapen de los márgenes.
