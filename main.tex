@@ -44,7 +44,12 @@ Corresponde a la traducción al idioma inglés de Palabras Clave anteriores.
 % Idioma y fuentes
 \usepackage[spanish,es-tabla]{babel}
 \usepackage[T1]{fontenc}
+
 \usepackage{fontspec}
+% Los siguientes comandos fueron sugeridos por @anibalbastiass (ver issue#5)
+% para contar con Carlito en cursiva y negrita.
+\setmainfont{Carlito}[BoldFont={* Bold}]
+\setmainfont{Carlito}[ItalicFont={* Italic}]
 
 % Paquete para definir cualquier tamaño de font
 \usepackage{anyfontsize}
